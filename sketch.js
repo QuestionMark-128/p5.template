@@ -3,9 +3,18 @@ function setup() {
 }
 
 function draw() {
-  background(100);    // Set background color           https://p5js.org/reference/#/p5/background
-  fill(255);          // Set color used to fill shapes  https://p5js.org/reference/#/p5/fill
-  noStroke();         // Disable drawing shape outlines https://p5js.org/reference/#/p5/noStroke
+  background(255);    // Set background color           https://p5js.org/reference/#/p5/background
+  noFill();          // Set color used to fill shapes  https://p5js.org/reference/#/p5/fill
+  strokeWeight(2);
+  stroke('black');         // Disable drawing shape outlines https://p5js.org/reference/#/p5/noStroke
   rectMode(CENTER);   // Draw square based on center point  https://p5js.org/reference/#/p5/rectMode
-  rect(mouseX, mouseY, 50, 50);  // Draw square at mouse location  https://p5js.org/reference/#/p5/rect
+
+  for (let x = 0; x < width; x += 20) {
+    for (let y = 0; y < height; y += 20) {
+      let distance = dist(mouseX, mouseY, x, y);
+      let grid_square_size = distance / 500 * 40;
+      rect(x, y, grid_square_size, grid_square_size);
+      circle(x, y, grid_square_size);
+    }
+  }
 }
